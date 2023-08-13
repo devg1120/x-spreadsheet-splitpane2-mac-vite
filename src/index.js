@@ -43,11 +43,14 @@ class Spreadsheet {
     }) : null;
 
     this.data = this.addSheet();
-
+/*
     const rootEl = h('div', `${cssPrefix}`)
       .on('contextmenu', evt => evt.preventDefault());
     const rootEl2 = h('div', `${cssPrefix}`)
       .on('contextmenu', evt => evt.preventDefault());
+*/
+    const rootEl = h('div', `${cssPrefix}`);
+    const rootEl2 = h('div', `${cssPrefix}`);
 
     // create canvas element
     targetEl.appendChild(rootEl.el);
@@ -132,6 +135,7 @@ class Spreadsheet {
   }
 
   on(eventName, func) {
+    console.log("set on:"+eventName);
     this.sheet.on(eventName, func);
     this.sheet2.on(eventName, func);
     return this;
@@ -143,6 +147,7 @@ class Spreadsheet {
   }
 
   change(cb) {
+    console.log("set change");
     this.sheet.on('change', cb);
     this.sheet2.on('change', cb);
     return this;
